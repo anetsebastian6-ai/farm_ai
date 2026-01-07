@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "1764265111820",
+    "name": "abel",
+    "email": "user1@gmail.com",
+    "password": "user321",
+    "role": "farmer",
+    "createdAt": "2025-11-27T17:38:31.820Z"
+  },
+  {
+    "_id": "1764265180512",
+    "name": "devan",
+    "email": "user2@gmail.com",
+    "password": "user321",
+    "role": "farmer",
+    "createdAt": "2025-11-27T17:39:40.512Z"
+  }
+]

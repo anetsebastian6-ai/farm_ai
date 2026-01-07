@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F9FAFB; /* Gray 50 */
+  color: #1F2937; /* Gray 800 */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #10B981;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #047857;
+}
+
+/* Dark mode overrides (apply when `html` has class `dark`) */
+html.dark body {
+  background-color: #0f172a; /* gray-900 */
+  color: #e5e7eb; /* gray-200 */
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0b1220;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #065f46;
+}
+
+/* Common utility overrides so components with Tailwind classes also adapt */
+html.dark .bg-white { background-color: #0b1220 !important; }
+html.dark .text-gray-800 { color: #e5e7eb !important; }
+html.dark .text-gray-500 { color: #9ca3af !important; }
+html.dark .border-gray-100 { border-color: #374151 !important; }
+html.dark .bg-gray-50 { background-color: #071124 !important; }
+html.dark .bg-gray-100 { background-color: #0b1220 !important; }
+html.dark .bg-gradient-to-r { /* keep gradient but darken */ }
+
+/* Buttons and highlights */
+html.dark .bg-farm-green { background-color: #10B981 !important; }
+html.dark .text-farm-green { color: #10B981 !important; }
+
