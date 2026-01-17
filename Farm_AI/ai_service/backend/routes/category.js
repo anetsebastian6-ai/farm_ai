@@ -13,6 +13,7 @@ const stream = require("stream");
 const accesskey = process.env.AWSACCESSKEY
 const awssecret = process.env.AWSSECRETACCESSKEY
 const awsbucket = process.env.AWSBUCKET
+const { google } = require('googleapis');
 
 //AWS S3 BUCKET METHOD:
 

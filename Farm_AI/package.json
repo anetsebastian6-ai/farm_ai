@@ -3,10 +3,11 @@
     "version": "1.0.0",
     "description": "Root script to run Farm AI",
     "scripts": {
-        "start": "concurrently \"npm run start --prefix frontend\" \"npm run start --prefix backend\"",
+        "start": "concurrently \"npm run start --prefix frontend\" \"npm run start --prefix backend\" \"npm run start:ai\"",
         "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend",
         "start:frontend": "npm start --prefix frontend",
-        "start:backend": "npm start --prefix backend"
+        "start:backend": "npm start --prefix backend",
+        "start:ai": "cd ai_service/flask-backend && .venv\\Scripts\\python app.py"
     },
     "devDependencies": {
         "concurrently": "^8.2.2"

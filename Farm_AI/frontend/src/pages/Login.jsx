@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
 import api from '../api/api';
 import { User, Lock, AlertCircle, Tractor, ShoppingCart, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -21,14 +20,7 @@ const Login = () => {
         e.preventDefault();
         setStatus({ loading: true, error: '' });
         try {
-            // First try relative API (works when REACT_APP_API_URL is set in api.js or proxy configured)
-            let res;
-            try {
-                res = await api.post('/api/login', formData);
-            } catch (innerErr) {
-                // fallback to explicit localhost:5000
-                res = await axios.post('http://127.0.0.1:5000/api/login', formData);
-            }
+            const res = await api.post('/api/login', formData);
 
             const userData = res.data?.user || res.data;
             if (!userData) {
@@ -115,8 +107,8 @@ const Login = () => {
                         />
 
                         <div className="mt-8">
-                            <Button disabled={status.loading} type="submit" className="shadow-xl shadow-farm-green/20">
-                                {status.loading ? 'Signing In...' : 'Sign In'}
+                            <Button loading={status.loading} type="submit" className="shadow-xl shadow-farm-green/20">
+                                Sign In
                             </Button>
                         </div>
                     </form>

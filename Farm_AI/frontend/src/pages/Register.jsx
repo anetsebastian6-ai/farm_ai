@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { User, Lock, Mail, Tractor, ShoppingCart, Check } from 'lucide-react';
+import api from '../api/api';
+import { User, Lock, Mail, Tractor, ShoppingCart, Check, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
@@ -18,7 +18,7 @@ const Register = () => {
         e.preventDefault();
         setStatus({ loading: true, error: '' });
         try {
-            await axios.post('http://127.0.0.1:5000/api/register', formData);
+            await api.post('/api/register', formData);
             navigate('/login');
         } catch (err) {
             setStatus({ loading: false, error: err.response?.data?.message || 'Registration failed' });
@@ -43,9 +43,14 @@ const Register = () => {
                     <p className="text-center text-gray-500 mb-8">Start your journey with us today</p>
 
                     {status.error && (
-                        <div className="bg-red-50 text-red-600 p-4 rounded-xl mb-6 text-sm font-medium border border-red-100">
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            className="bg-red-50 text-red-600 p-4 rounded-xl mb-6 flex items-center gap-3 text-sm font-medium border border-red-100"
+                        >
+                            <AlertCircle size={18} />
                             {status.error}
-                        </div>
+                        </motion.div>
                     )}
 
                     <form onSubmit={handleSubmit}>
@@ -72,8 +77,8 @@ const Register = () => {
                             </div>
                         </div>
 
-                        <Button disabled={status.loading} type="submit" variant="primary" className="shadow-xl shadow-farm-green/20">
-                            {status.loading ? 'Creating Account...' : 'Create Account'}
+                        <Button loading={status.loading} type="submit" variant="primary" className="shadow-xl shadow-farm-green/20">
+                            Create Account
                         </Button>
                     </form>
 

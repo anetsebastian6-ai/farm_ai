@@ -8,7 +8,8 @@ const Button = ({
     disabled,
     className = '',
     variant = 'primary',
-    type = 'button'
+    type = 'button',
+    loading = false
 }) => {
     const baseStyles = "w-full py-3 px-6 rounded-xl font-bold transition-all duration-200 flex justify-center items-center gap-2 shadow-lg hover:shadow-xl active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed";
 
@@ -19,15 +20,17 @@ const Button = ({
         ghost: "bg-transparent text-gray-600 hover:bg-gray-100 shadow-none"
     };
 
+    const isDisabled = disabled || loading;
+
     return (
         <motion.button
-            whileTap={{ scale: 0.98 }}
+            whileTap={isDisabled ? {} : { scale: 0.98 }}
             type={type}
             onClick={onClick}
-            disabled={disabled}
+            disabled={isDisabled}
             className={`${baseStyles} ${variants[variant]} ${className}`}
         >
-            {disabled ? <Loader2 className="animate-spin h-5 w-5" /> : children}
+            {loading ? <Loader2 className="animate-spin h-5 w-5" /> : children}
         </motion.button>
     );
 };

@@ -7,4 +7,5 @@ scikit-learn
 Pillow
 torch
 torchvision
-
+google-generativeai
+python-dotenv
